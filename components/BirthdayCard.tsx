@@ -1,21 +1,19 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { generateBirthdayWish } from '../services/geminiService';
 
 interface BirthdayCardProps {
   visible: boolean;
 }
 
-const BirthdayCard: React.FC<BirthdayCardProps> = ({ visible }) => {
-  const [wish, setWish] = useState<string>('');
-  const [loading, setLoading] = useState(true);
+const INITIAL_WISH = "Настя! Поздравляю тебя! Тебе можно желать много, но я просто скажу, что я бы не парился над поздравлением так сильно в другой ситуации. В общем, у тебя еще все впереди, и я пожелаю тебе это \"впереди\" успешно преодолеть и стать лучше, сильнее, и вообще да. Следующие поздравления будет делать мощь гугловских серверов, жми кнопку ниже. Еще раз С Днём Рождения!";
 
-  // Initial load
-  useEffect(() => {
-    if (visible && !wish) {
-      handleGenerateWish();
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [visible]);
+const BirthdayCard: React.FC<BirthdayCardProps> = ({ visible }) => {
+  // Start with the hardcoded wish and not loading
+  const [wish, setWish] = useState<string>(INITIAL_WISH);
+  const [loading, setLoading] = useState(false);
+
+  // We removed the useEffect that auto-generated the wish on mount
+  // so the user sees the initial message first.
 
   const handleGenerateWish = async () => {
     setLoading(true);

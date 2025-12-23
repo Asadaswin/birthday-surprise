@@ -39,10 +39,15 @@ const App: React.FC = () => {
       {/* Main Content */}
       <BirthdayCard visible={stage === AppStage.CELEBRATION} />
       
-      {/* Audio hint (Visual only as we don't have file assets) */}
+      {/* FOOTER / ПОДВАЛ: Здесь можно менять тексты внизу экрана */}
       {stage === AppStage.CELEBRATION && (
-        <div className="absolute bottom-4 text-slate-500 text-xs text-center w-full opacity-50">
-          Сгенерировано нейросетью специально для тебя ❤️
+        <div className="absolute bottom-4 w-full flex flex-col items-center justify-center space-y-1 opacity-60 z-20">
+          <div className="text-slate-400 text-xs">
+            Сгенерировано нейросетью специально для тебя ❤️
+          </div>
+          <div className="text-slate-600 text-[10px] uppercase tracking-widest font-mono hover:text-purple-400 transition-colors cursor-default">
+            Developed by ASADASWIN
+          </div>
         </div>
       )}
     </div>
